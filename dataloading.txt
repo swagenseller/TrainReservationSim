@@ -1,0 +1,4 @@
+//Notes for dataloading
+
+.separator |
+.import stations.dat Stations;

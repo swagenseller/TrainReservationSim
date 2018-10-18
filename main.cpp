@@ -51,7 +51,8 @@ int main(int argc, char* argv[]) {
     err = 1;
   }
 
-
-  //cout << "What train station are you arriving to? \n";
-  //cin >> arrive;
+  cout << "What train station are you arriving to? \n";
+  cin >> arrive;
+  sqlite3_close(db);
+  return 0;
 }
