@@ -2,3 +2,6 @@
 
 .separator |
 .import stations.dat Stations;
+
+
+g++ main.cpp -lsqlite3 -o main
