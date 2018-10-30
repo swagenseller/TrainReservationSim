@@ -8,9 +8,10 @@ using namespace std;
 
 static int callback(void *data, int argc, char **argv, char **azColName) {
  int i;
- fprintf(stderr, "%s: ", (const char*)data);
+ fprintf(stderr, "%s:\n", (const char*)data);
  for(i = 0; i<argc; i++) {
-    printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    //printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    printf("%s\n", argv[i] ? argv[i] : "NULL");
  }
  printf("\n");
  return 0;
@@ -18,7 +19,7 @@ static int callback(void *data, int argc, char **argv, char **azColName) {
 
 int main(int argc, char* argv[]) {
 
-    const char* data = "call back function called?";
+    const char* data = "call back function called";
   // database portion
   sqlite3 *db;
   char *zErrMsg = 0;
@@ -43,12 +44,6 @@ int main(int argc, char* argv[]) {
 
   cout << "Welcome to Italian Train ticket reservation simulator. \n";
   cout << "What train station are you departing from? \n";
-  //cin >> depart;
-  //err = departing(depart, sql, rc, zErrMsg, db, test);
-  //first = "SELECT STATION_ID_A FROM StationSchedule WHERE STATION_ID_A = '";
-  //st = first + depart + "'" + ";";
-  //cout << st << "\n";
-  //rc = sqlite3_exec(db, st.c_str(), callback, 0, &zErrMsg);
   while (err < 1) {
       cin >> depart;
       first = "SELECT * FROM StationSchedule WHERE STATION_ID_D = '";
@@ -67,12 +62,12 @@ int main(int argc, char* argv[]) {
 
   cout << "What train station are you arriving to? \n";
   cin >> arrive;
-  sec = "SELECT * FROM StationSchedule WHERE STATION_ID_D = '";
-  //string seco = "SELECT * FROM StationSchedule WHERE STATION_ID_D = 'ROM' AND STATION_ID_A = 'MIL'";
-  //stat = sec + arrive + "'" + ";";
-  stat = "SELECT * FROM StationSchedule WHERE STATION_ID_D = '" + depart + "' AND STATION_ID_A = '" + arrive + "';" ;
+  //stat = "SELECT * FROM StationSchedule WHERE STATION_ID_D = '" + depart + "' AND STATION_ID_A = '" + arrive + "';" ;
+  string query = "SELECT s1.STATION_NAME, s2.STATION_NAME, ss.ARRIVAL_TIME, ss.DEPARTURE_TIME "\
+                 "FROM Stations s1, Stations s2, StationSchedule ss "\
+                 "WHERE ss.STATION_ID_A = '" + depart +"' AND ss.STATION_ID_D = '" + arrive +"' AND s1.ID = ss.STATION_ID_A AND s2.ID = ss.STATION_ID_D;";
   cout << stat << "\n";
-  rc = sqlite3_exec(db, stat.c_str(), callback, 0, &zErrMsg);
+  rc = sqlite3_exec(db, query.c_str(), callback, 0, &zErrMsg);
   if( rc != SQLITE_OK ) {
     fprintf(stderr, "SQL error: %s\n", zErrMsg);
     fprintf(stdout, "No available connections.\n");
