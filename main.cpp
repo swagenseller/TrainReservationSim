@@ -2,9 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sqlite3.h>
+#include <vector>
 //#include "dbHelper.h"
 using namespace std;
 
+vector<char*> queryVector;
 
 static int callback(void *data, int argc, char **argv, char **azColName) {
  int i;
@@ -12,6 +14,7 @@ static int callback(void *data, int argc, char **argv, char **azColName) {
  for(i = 0; i<argc; i++) {
     //printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
     printf("%s\n", argv[i] ? argv[i] : "NULL");
+    queryVector.push_back(argv[i]);
  }
  printf("\n");
  return 0;
@@ -58,6 +61,10 @@ int main(int argc, char* argv[]) {
           fprintf(stdout, "Query successfully!\n");
           err = 1;
       }
+      /*cout << queryVector.size();
+      for (int i = 0; i<queryVector.size(); i++) {
+          printf("%s\n", queryVector[i] );
+      } */
   }
 
   cout << "What train station are you arriving to? \n";
