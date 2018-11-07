@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
   //stat = "SELECT * FROM StationSchedule WHERE STATION_ID_D = '" + depart + "' AND STATION_ID_A = '" + arrive + "';" ;
   string query = "SELECT s1.STATION_NAME, s2.STATION_NAME, ss.ARRIVAL_TIME, ss.DEPARTURE_TIME "\
                  "FROM Stations s1, Stations s2, StationSchedule ss "\
-                 "WHERE ss.STATION_ID_A = '" + depart +"' AND ss.STATION_ID_D = '" + arrive +"' AND s1.ID = ss.STATION_ID_A AND s2.ID = ss.STATION_ID_D;";
+                 "WHERE ss.STATION_ID_D = '" + depart +"' AND ss.STATION_ID_A = '" + arrive +"' AND s1.ID = ss.STATION_ID_D AND s2.ID = ss.STATION_ID_A;";
   cout << stat << "\n";
   rc = sqlite3_exec(db, query.c_str(), callback, 0, &zErrMsg);
   if( rc != SQLITE_OK ) {
