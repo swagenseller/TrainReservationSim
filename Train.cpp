@@ -1,7 +1,7 @@
 // Train.cpp
 #include "Train.h"
 
-
+// basic getter functions
 int Train::getTrainNo() {
     return trainNo;
 }
@@ -16,4 +16,21 @@ int Train::getDepatureTime(){
 }
 int Train::getArrivalTime(){
     return arrivalTime;
+}
+
+// basic setter functions
+void Train::setTrainNo(int input) {
+    trainNo = input;
+}
+void Train::setArriving(string input){
+    arriving = input;
+}
+void Train::setDeparting(string input){
+    departing = input;
+}
+void Train::setDepatureTime(int input){
+    departTime = input;
+}
+void Train::setArrivalTime(int input){
+    arrivalTime = input;
 }

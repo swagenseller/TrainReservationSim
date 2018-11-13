@@ -21,13 +21,19 @@ public:
         departing = "";
         arriving = "";
         departTime = 0;
-        arrivalTime = 0;        
+        arrivalTime = 0;
     };
     int getTrainNo();
     string getDeparting();
     string getArriving();
     int getDepatureTime();
     int getArrivalTime();
+
+    void setTrainNo(int input);
+    void setDeparting(string input);
+    void setArriving(string input);
+    void setDepatureTime(int input);
+    void setArrivalTime(int input);
 
 };
 #endif
