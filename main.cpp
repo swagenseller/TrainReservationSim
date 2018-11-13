@@ -27,11 +27,13 @@ int main(int argc, char* argv[]) {
   sqlite3 *db;
   char *zErrMsg = 0;
   int rc;
+  Result cr;
   string sql;
   string first;
   string sec;
   string st;
   string stat;
+  string eta;
 
   rc = sqlite3_open("Trains.db", &db);
   if( rc ) {
@@ -69,6 +71,8 @@ int main(int argc, char* argv[]) {
 
   cout << "What train station are you arriving to? \n";
   cin >> arrive;
+  //cout << "What time do you want to arrive in " + arrive + "\n";
+  //cin >> eta;
   //stat = "SELECT * FROM StationSchedule WHERE STATION_ID_D = '" + depart + "' AND STATION_ID_A = '" + arrive + "';" ;
   string query = "SELECT s1.STATION_NAME, s2.STATION_NAME, ss.ARRIVAL_TIME, ss.DEPARTURE_TIME "\
                  "FROM Stations s1, Stations s2, StationSchedule ss "\
