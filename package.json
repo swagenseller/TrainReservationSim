@@ -1,0 +1,23 @@
+{
+  "name": "trainreservation",
+  "version": "1.0.0",
+  "description": "simple train booking system",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swagenseller/TrainReservationSim.git"
+  },
+  "author": "Jeff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swagenseller/TrainReservationSim/issues"
+  },
+  "homepage": "https://github.com/swagenseller/TrainReservationSim#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "sqlite3": "^4.0.6"
+  }
+}
